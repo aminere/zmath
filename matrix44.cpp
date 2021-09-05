@@ -99,13 +99,18 @@ Matrix44 Matrix44::operator*(const Matrix44& other) const {
 }
 
 Vector3 Matrix44::operator*(const Vector3& v) const {    
+    float w;
+    return transform(v, w);
+}
+
+Vector3 Matrix44::transform(const Vector3& v, float& w) const {
     const auto x = v.x(), y = v.y(), z = v.z();
     const auto result = Vector3::create(
         _data[0] * x + _data[4] * y + _data[8] * z + _data[12],
         _data[1] * x + _data[5] * y + _data[9] * z + _data[13],
         _data[2] * x + _data[6] * y + _data[10] * z + _data[14]
     );
-    const auto w = _data[3] * x + _data[7] * y + _data[11] * z + _data[15];
+    w = _data[3] * x + _data[7] * y + _data[11] * z + _data[15];
     return result / w;
 }
 

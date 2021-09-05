@@ -12,11 +12,12 @@ public:
     Matrix44& setPosition(const Vector3& position);
     Matrix44& compose(const Vector3& position, const Quaternion& rotation, const Vector3& scale);
     
-    static Matrix44 makePerspective(float fovRadians, float aspectRatio, float zNear, float zFar);
+    static Matrix44 makePerspective(float fovRadians, float aspectRatio, float zNear, float zFar);    
 
     Matrix44 operator * (const Matrix44& other) const;
     Vector3 operator * (const Vector3& v) const;
 
     bool getInverse(Matrix44& out) const;
     Matrix44& setIdentity();
+    Vector3 transform(const Vector3& v, float& w) const;
 };
