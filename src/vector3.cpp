@@ -4,8 +4,8 @@
 #include <cmath>
 
 Vector3 Vector3::create(float x, float y, float z) {
-	Vector3 v;
-	return v.set(x, y, z);
+    Vector3 v = { x, y, z };
+    return v;
 }
 
 Vector3 Vector3::zero = Vector3::create(0.f, 0.f, 0.f);

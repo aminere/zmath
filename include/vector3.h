@@ -2,9 +2,9 @@
 
 class Vector3 {
 private:
-	float _x;
-	float _y;
-	float _z;
+	float _x = 0.f;
+	float _y = 0.f;
+	float _z = 0.f;
 
 public:
 
@@ -14,14 +14,13 @@ public:
 	static Vector3 right;
 	static Vector3 up;
 
-	Vector3() {
-	}
+	static Vector3 create(float x, float y, float z);
 
+	Vector3() = default;
 	Vector3(float x, float y, float z) {
 		set(x, y, z);
 	}
 
-	static Vector3 create(float x, float y, float z);
 	inline Vector3& set(float x, float y, float z) {
 		_x = x;
 		_y = y;
@@ -42,9 +41,6 @@ public:
 		return _x * other._x + _y * other._y + _z * other._z;
 	}
 
-	float length() const;
-	Vector3& normalize();
-
 	inline Vector3 operator * (float f) const {
 		return Vector3::create(_x * f, _y * f, _z * f);
 	}
@@ -60,4 +56,7 @@ public:
 	inline Vector3 operator / (float f) const {
 		return this->operator*(1.f / f);
 	}
+
+	float length() const;
+	Vector3& normalize();
 };
