@@ -61,11 +61,12 @@ namespace zmath {
 		return *this;
 	}
 
-	Matrix44& Matrix44::compose(const Vector3& position, const Quaternion& rotation, const Vector3& _scale) {
-		setRotation(rotation);
-		scale(_scale);
-		setPosition(position);
-		return *this;
+	Matrix44 Matrix44::compose(const Vector3& position, const Quaternion& rotation, const Vector3& _scale) {
+		Matrix44 out;
+		out.setRotation(rotation);
+		out.scale(_scale);
+		out.setPosition(position);
+		return out;
 	}
 
 	Matrix44 Matrix44::operator*(const Matrix44& other) const {
