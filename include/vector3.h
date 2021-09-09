@@ -26,6 +26,8 @@ namespace zmath {
 			z = _z;
 		}
 
+		Vector3 cross(const Vector3& other) const;
+
 		inline float dot(const Vector3& other) const {
 			return x * other.x + y * other.y + z * other.z;
 		}

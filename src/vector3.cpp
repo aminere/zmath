@@ -27,4 +27,13 @@ namespace zmath {
             return *this;
         }
     }
+
+    Vector3 Vector3::cross(const Vector3& other) const {
+        return {
+            y * other.z - z * other.y,
+            z * other.x - x * other.z,
+            x * other.y - y * other.x
+        };
+    }
 }
+

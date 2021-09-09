@@ -109,23 +109,15 @@ namespace zmath {
 	}
 
 	Vector3 Matrix44::operator*(const Vector3& v) const {
-		const auto x = v.x, y = v.y, z = v.z;
-		Vector3 result = {
-			data[0] * x + data[4] * y + data[8] * z + data[12],
-			data[1] * x + data[5] * y + data[9] * z + data[13],
-			data[2] * x + data[6] * y + data[10] * z + data[14]
-		};
-		auto w = data[3] * x + data[7] * y + data[11] * z + data[15];
-		return result / w;
+		return this->operator*(Vector4(v, 1.f)).xyz;
 	}
 
 	Vector4 Matrix44::operator*(const Vector4& v) const {
-		const auto x = v.x, y = v.y, z = v.z;
-		auto vx = data[0] * x + data[4] * y + data[8] * z + data[12];
-		auto vy = data[1] * x + data[5] * y + data[9] * z + data[13];
-		auto vz = data[2] * x + data[6] * y + data[10] * z + data[14];
-		auto w = data[3] * x + data[7] * y + data[11] * z + data[15];
-		return { vx, vy, vz, w };
+		auto x = data[0] * v.x + data[4] * v.y + data[8]  * v.z + data[12] * v.w;
+		auto y = data[1] * v.x + data[5] * v.y + data[9]  * v.z + data[13] * v.w;
+		auto z = data[2] * v.x + data[6] * v.y + data[10] * v.z + data[14] * v.w;
+		auto w = data[3] * v.x + data[7] * v.y + data[11] * v.z + data[15] * v.w;
+		return { x, y, z, w };
 	}
 
 	bool Matrix44::getInverse(Matrix44& out) const {

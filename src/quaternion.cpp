@@ -70,7 +70,7 @@ namespace zmath {
 		return (float)sqrt((float)((x * x) + (y * y) + (z * z) + (w * w)));
 	}
 
-	Vector3 Quaternion::operator * (const Vector3& v) {
+	Vector3 Quaternion::operator * (const Vector3& v) const {
 		// calculate quat * vector
 		const auto ix = w * v.x + y * v.z - z * v.y;
 		const auto iy = w * v.y + z * v.x - x * v.z;
