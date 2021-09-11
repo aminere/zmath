@@ -25,6 +25,18 @@
     <ClCompile Include="src\plane.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\clipping.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ray.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\collision.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\zmath.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
@@ -63,6 +75,15 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\plane.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\clipping.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ray.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\collision.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

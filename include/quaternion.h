@@ -1,7 +1,5 @@
 #pragma once
 
-#include "vector3.h"
-
 namespace zmath {
 
 	class Quaternion {

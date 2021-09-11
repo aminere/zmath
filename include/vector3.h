@@ -1,5 +1,7 @@
 #pragma once
 
+#include "vector2.h"
+
 namespace zmath {
 
 	class Vector3 {
@@ -23,6 +25,11 @@ namespace zmath {
 		Vector3(float _x, float _y, float _z) {
 			x = _x;
 			y = _y;
+			z = _z;
+		}
+		Vector3(const Vector2& xy, float _z) {
+			x = xy.x;
+			y = xy.y;
 			z = _z;
 		}
 
@@ -50,5 +57,6 @@ namespace zmath {
 
 		float length() const;
 		Vector3& normalize();
+
 	};
 }

@@ -11,6 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\clipping.cpp" />
+    <ClCompile Include="src\collision.cpp" />
     <ClCompile Include="src\matrix44.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -18,14 +20,19 @@
     </ClCompile>
     <ClCompile Include="src\plane.cpp" />
     <ClCompile Include="src\quaternion.cpp" />
+    <ClCompile Include="src\ray.cpp" />
     <ClCompile Include="src\triangle.cpp" />
     <ClCompile Include="src\vector2.cpp" />
     <ClCompile Include="src\vector3.cpp" />
     <ClCompile Include="src\vector4.cpp" />
+    <ClCompile Include="src\zmath.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\clipping.h" />
+    <ClInclude Include="include\collision.h" />
     <ClInclude Include="include\framework.h" />
     <ClInclude Include="include\plane.h" />
+    <ClInclude Include="include\ray.h" />
     <ClInclude Include="include\triangle.h" />
     <ClInclude Include="include\vector4.h" />
     <ClInclude Include="include\matrix44.h" />

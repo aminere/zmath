@@ -1,14 +1,20 @@
 #pragma once
 
-#include "vector3.h"
-
 namespace zmath {
 	class Triangle {
 	public:
 
-		Vector3 a;
-		Vector3 b;
-		Vector3 c;
+		union {
+			struct {
+				Vector3 a;
+				Vector3 b;
+				Vector3 c;
+			};
+			struct {
+				Vector3 points[3];
+			};
+		};
+		
 
 		Triangle() = default;
 		Triangle(const Vector3& _a, const Vector3& _b, const Vector3& _c)
