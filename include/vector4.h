@@ -22,10 +22,6 @@ namespace zmath {
 			};
 		};
 
-		inline static Vector4 create(float x, float y, float z, float w) {
-			return { x, y, z, w };
-		}
-
 		Vector4() = default;
 		Vector4(float _x, float _y, float _z, float _w) {
 			x = _x;

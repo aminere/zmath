@@ -5,8 +5,8 @@
 
 namespace zmath {
 
-    Vector2 Vector2::zero = Vector2::create(0.f, 0.f);
-    Vector2 Vector2::one = Vector2::create(1.f, 1.f);
+    Vector2 Vector2::zero(0.f, 0.f);
+    Vector2 Vector2::one(1.f, 1.f);
 
     float Vector2::length() const {
         return (float)sqrt((float)((x * x) + (y * y)));

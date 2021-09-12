@@ -78,7 +78,7 @@ namespace zmath {
 		const auto iw = -x * v.x - y * v.y - z * v.z;
 
 		// calculate result * inverse quat
-		return Vector3::create(
+		return Vector3(
 			ix * w + iw * -x + iy * -z - iz * -y,
 			iy * w + iw * -y + iz * -x - ix * -z,
 			iz * w + iw * -z + ix * -y - iy * -x

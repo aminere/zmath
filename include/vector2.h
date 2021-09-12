@@ -18,10 +18,6 @@ namespace zmath {
 			y = _y;
 		}
 
-		inline static Vector2 create(float x, float y) {
-			return { x, y };
-		}
-
 		inline float dot(const Vector2& other) const {
 			return x * other.x + y * other.y;
 		}
@@ -30,15 +26,15 @@ namespace zmath {
 		Vector2& normalize();
 
 		inline Vector2 operator * (float f) const {
-			return Vector2::create(x * f, y * f);
+			return Vector2(x * f, y * f);
 		}
 
 		inline Vector2 operator + (const Vector2& other) const {
-			return Vector2::create(x + other.x, y + other.y);
+			return Vector2(x + other.x, y + other.y);
 		}
 
 		inline Vector2 operator - (const Vector2& other) const {
-			return Vector2::create(x - other.x, y - other.y);
+			return Vector2(x - other.x, y - other.y);
 		}
 
 		inline Vector2 operator / (float f) const {

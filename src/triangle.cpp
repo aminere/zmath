@@ -35,7 +35,7 @@ namespace zmath {
 			auto v = (d11 * d20 - d01 * d21) / det;
 			auto w = (d00 * d21 - d01 * d20) / det;
 			auto u = 1.0f - v - w;
-			out = Vector3::create(u, v, w);
+			out = Vector3(u, v, w);
 			return true;
 		}
 		return false;

@@ -5,11 +5,11 @@
 
 namespace zmath {
 
-    Vector3 Vector3::zero = Vector3::create(0.f, 0.f, 0.f);
-    Vector3 Vector3::one = Vector3::create(1.f, 1.f, 1.f);
-    Vector3 Vector3::right = Vector3::create(1.f, 0.f, 0.f);
-    Vector3 Vector3::up = Vector3::create(0.f, 1.f, 0.f);
-    Vector3 Vector3::forward = Vector3::create(0.f, 0.f, 1.f);
+    Vector3 Vector3::zero(0.f, 0.f, 0.f);
+    Vector3 Vector3::one(1.f, 1.f, 1.f);
+    Vector3 Vector3::right(1.f, 0.f, 0.f);
+    Vector3 Vector3::up(0.f, 1.f, 0.f);
+    Vector3 Vector3::forward(0.f, 0.f, 1.f);
 
     float Vector3::length() const {
         return (float)sqrt((float)((x * x) + (y * y) + (z * z)));
