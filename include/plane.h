@@ -13,6 +13,7 @@ namespace zmath {
 			Planar
 		};
 
+		Plane() = default;
 		Plane(const Vector3& normal, float distFromOrigin);
 		Plane(const Vector3& normal, const Vector3& point);
 		Plane(const Vector3& v1, const Vector3& v2, const Vector3& v3);

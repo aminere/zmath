@@ -2,10 +2,12 @@
 
 namespace zmath {
 
+	class Matrix44;
+
 	class Quaternion {
 	public:
 
-		enum RotationOrder {
+		enum class RotationOrder {
 			YXZ,
 			ZYX,
 			XYZ,
@@ -15,7 +17,6 @@ namespace zmath {
 		};
 
 		static Quaternion identity;
-		static Quaternion fromEulerAngles(float x, float y, float z, RotationOrder order = RotationOrder::YXZ);
 
 		float x = 0.f;
 		float y = 0.f;
@@ -23,12 +24,15 @@ namespace zmath {
 		float w = 1.f;
 
 		Quaternion() = default;
-		Quaternion(float _x, float _y, float _z, float _w) {
-			x = _x;
-			y = _y;
-			z = _z;
-			w = _w;
+		Quaternion(float _x, float _y, float _z, float _w)
+		: x(_x)
+		, y(_y)
+		, z(_z)
+		, w(_w) {			
 		}
+
+		Quaternion(const Vector3& eulerAngles, RotationOrder order = RotationOrder::YXZ);
+		Quaternion(const Matrix44& matrix);
 
 		Quaternion& normalize();
 

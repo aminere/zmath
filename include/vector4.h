@@ -20,6 +20,10 @@ namespace zmath {
 				Vector3 xyz;
 				float w2;
 			};
+
+			struct {
+				float coords[4];
+			};
 		};
 
 		Vector4() = default;

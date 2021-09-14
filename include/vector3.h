@@ -4,6 +4,8 @@
 
 namespace zmath {
 
+	class Matrix44;
+
 	class Vector3 {
 	public:
 
@@ -35,6 +37,7 @@ namespace zmath {
 			y = xy.y;
 			z = _z;
 		}
+		Vector3(const Matrix44& matrix);
 
 		Vector3 cross(const Vector3& other) const;
 
@@ -64,5 +67,6 @@ namespace zmath {
 
 		float length() const;
 		Vector3& normalize();
+		Vector3 normalized() const;
 	};
 }

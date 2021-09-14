@@ -1,6 +1,7 @@
 
 #include "pch.h"
 #include "vector3.h"
+#include "matrix44.h"
 #include <cmath>
 
 namespace zmath {
@@ -11,11 +12,22 @@ namespace zmath {
     Vector3 Vector3::up(0.f, 1.f, 0.f);
     Vector3 Vector3::forward(0.f, 0.f, 1.f);
 
+    Vector3::Vector3(const Matrix44& matrix) {
+        x = matrix.data[12];
+        y = matrix.data[13];
+        z = matrix.data[14];
+    }
+
     float Vector3::length() const {
         return (float)sqrt((float)((x * x) + (y * y) + (z * z)));
     }
 
     Vector3& Vector3::normalize() {
+        *this = normalized();
+        return *this;
+    }
+
+    Vector3 Vector3::normalized() const {
         const auto len = length();
         if (len == 0.f) {
             //if (process.env.NODE_ENV == = "development") {
@@ -23,8 +35,7 @@ namespace zmath {
             //}
             return *this;
         } else {
-            *this = *this / len;
-            return *this;
+            return this->operator/(len);
         }
     }
 

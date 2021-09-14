@@ -7,5 +7,7 @@ namespace zmath {
 	inline float degrees (float radians) { return radians * 57.29579143f; }
 
 	bool isZero(float f);
+	float lerp(float a, float b, float k);
+	float sign(float f);
 }
 
