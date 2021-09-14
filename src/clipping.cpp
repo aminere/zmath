@@ -31,6 +31,20 @@ namespace zmath {
 			return true;
 		}
 
+		auto normal = (triangle.b - triangle.a).cross(triangle.c - triangle.a);
+		auto fixNormalIfNecessary = [&](const Triangle& newTriangle) {
+			auto newNormal = (newTriangle.b - newTriangle.a).cross(newTriangle.c - newTriangle.a);
+			if (normal.dot(newNormal) < 0.f) {
+				return Triangle(
+					newTriangle.a,
+					newTriangle.c,
+					newTriangle.b
+				);
+			} else {
+				return newTriangle;
+			}
+		};
+
 		if (back.size() == 2) {
 			assert(front.size() == 1);
 
@@ -43,8 +57,8 @@ namespace zmath {
 			Collision::RayPlaneResult result2;
 			auto c2 = Collision::rayPlane(r2, plane, result2);
 			assert(c2);
-
-			out.push_back(Triangle(front[0], result1.intersection, result2.intersection));
+			
+			out.push_back(fixNormalIfNecessary(Triangle(front[0], result1.intersection, result2.intersection)));
 
 		} else {
 			assert(front.size() == 2);
@@ -60,8 +74,8 @@ namespace zmath {
 			auto c2 = Collision::rayPlane(r2, plane, result2);
 			assert(c2);
 
-			out.push_back(Triangle(front[0], result1.intersection, result2.intersection));
-			out.push_back(Triangle(front[0], result2.intersection, front[1]));
+			out.push_back(fixNormalIfNecessary(Triangle(front[0], result1.intersection, result2.intersection)));
+			out.push_back(fixNormalIfNecessary(Triangle(front[0], result2.intersection, front[1])));
 		}
 
 		return true;

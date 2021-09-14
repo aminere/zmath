@@ -10,12 +10,12 @@ namespace zmath {
 
 	Quaternion::Quaternion(const Vector3& eulerAngles, RotationOrder order) {
 		// based on Threejs
-		const auto c1 = (float)cos(x / 2.f);
-		const auto c2 = (float)cos(y / 2.f);
-		const auto c3 = (float)cos(z / 2.f);
-		const auto s1 = (float)sin(x / 2.f);
-		const auto s2 = (float)sin(y / 2.f);
-		const auto s3 = (float)sin(z / 2.f);
+		const auto c1 = (float)cos(eulerAngles.x / 2.f);
+		const auto c2 = (float)cos(eulerAngles.y / 2.f);
+		const auto c3 = (float)cos(eulerAngles.z / 2.f);
+		const auto s1 = (float)sin(eulerAngles.x / 2.f);
+		const auto s2 = (float)sin(eulerAngles.y / 2.f);
+		const auto s3 = (float)sin(eulerAngles.z / 2.f);
 		if (order == RotationOrder::YXZ) {
 			x = s1 * c2 * c3 + c1 * s2 * s3;
 			y = c1 * s2 * c3 - s1 * c2 * s3;
