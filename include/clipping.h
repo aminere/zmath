@@ -7,8 +7,27 @@
 
 namespace zmath {
 	class Clipping {
-	public:		
+	public:
 
-		static bool trianglePlane(const Triangle& triangle, const Plane& plane, std::vector<Triangle>& out);
+		enum class Status {
+			Visible,
+			Hidden,
+			Clipped
+		};
+
+		struct ClippedVertex {
+			int index;
+			Vector3 clippedPosition;
+			float mixFactor;
+			int mixVertex1;
+			int mixVertex2;
+		};
+
+		struct ClippedTriangle {
+			std::vector<ClippedVertex> vertices;
+		};
+
+		static Status trianglePlane(const Triangle& triangle, const Plane& plane, std::vector<ClippedTriangle>& out);
 	};
 }
+
