@@ -65,8 +65,12 @@ namespace zmath {
 			return this->operator*(1.f / f);
 		}
 
-		inline Vector3 operator -() const 		{
+		inline Vector3 operator -() const {
 			return this->operator*(-1.f);
+		}
+
+		inline Vector3 reflect(const Vector3& normal) const {
+			return this->operator-(normal * 2.f * this->dot(normal));
 		}
 
 		float length() const;
