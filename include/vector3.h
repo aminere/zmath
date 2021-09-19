@@ -49,6 +49,10 @@ namespace zmath {
 			return Vector3(x * f, y * f, z * f);
 		}
 
+		inline Vector3 operator * (const Vector3& other) const {
+			return Vector3(x * other.x, y * other.y, z * other.z);
+		}
+
 		inline Vector3 operator + (const Vector3& other) const {
 			return Vector3(x + other.x, y + other.y, z + other.z);
 		}

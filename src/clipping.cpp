@@ -44,6 +44,7 @@ namespace zmath {
 			{ {2, 0}, Vector3::zero, .0f },
 		};
 
+		// Determine clipped edges, and their intersection with the clipping plane
 		for (int i = 0; i < 3; ++i) {
 			auto inside1 = inside[edges[i].vertices[0]];
 			auto inside2 = inside[edges[i].vertices[1]];
@@ -58,7 +59,7 @@ namespace zmath {
 				assert(c1);
 				edges[i].intersection = result.intersection;
 				auto mixFactor = (result.intersection - p1).length() / (p2 - p1).length();
-				edges[i].mixFactor = inside1 ? mixFactor: 1.f - mixFactor;
+				edges[i].mixFactor = inside1 ? mixFactor : (1.f - mixFactor);
 			}
 		}
 
@@ -82,6 +83,7 @@ namespace zmath {
 
 		if (front.size() == 1) {
 
+			// Output 1 triangle
 			std::vector<ClippedVertex> vertices;
 			for (int i = 0; i < 3; ++i) {
 				auto inside1 = inside[edges[i].vertices[0]];
@@ -101,6 +103,7 @@ namespace zmath {
 
 		} else {
 
+			// Output 2 triangles
 			auto inside1 = inside[edges[0].vertices[0]];
 			auto inside2 = inside[edges[0].vertices[1]];
 			if (inside1 == inside2) {
@@ -132,7 +135,7 @@ namespace zmath {
 				ClippedTriangle triangle2{ {
 					{ edges[0].vertices[0], Vector3::zero, 0.f, 0, 0 },
 					{ -1, edges[1].intersection, edges[1].mixFactor, edges[1].vertices[0], edges[1].vertices[1] },
-					{ edges[2].vertices[0], Vector3::zero, 0.f, 0, 0 }
+					{ edges[1].vertices[1], Vector3::zero, 0.f, 0, 0 }
 				} };
 
 				out = { triangle1, triangle2 };
