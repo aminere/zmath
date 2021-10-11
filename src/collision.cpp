@@ -25,5 +25,19 @@ namespace zmath {
         }
         return true;
 	}
+
+    bool Collision::rayTriangle(const Ray& ray, const Triangle& triangle, RayTriangleResult& out) {
+        Plane plane(triangle.a, triangle.b, triangle.c);
+        if (!rayPlane(ray, plane, out)) {
+            return false;
+        }
+
+        Vector3 coords;
+        if (!triangle.contains(out.intersection, coords)) {
+            return false;
+        }
+
+        return true;
+    }
 }
 

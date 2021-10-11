@@ -2,6 +2,7 @@
 
 #include "ray.h"
 #include "plane.h"
+#include "triangle.h"
 
 namespace zmath {
 	class Collision {
@@ -12,7 +13,10 @@ namespace zmath {
 			Plane::Classification classification;
 		};
 
+		struct RayTriangleResult : public RayPlaneResult {};
+
 		static bool rayPlane(const Ray& ray, const Plane& plane, RayPlaneResult& out);
+		static bool rayTriangle(const Ray& ray, const Triangle& triangle, RayTriangleResult& out);
 	};
 }
 
