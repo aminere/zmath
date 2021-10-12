@@ -41,6 +41,19 @@ namespace zmath {
 		inline void operator = (const Vector3& v) {
 			xyz = v;
 		}
+
+		inline Vector4 operator * (float f) const {
+			return Vector4(x * f, y * f, z * f, w * f);
+		}
+
+		inline Vector4 operator * (const Vector4& other) const {
+			return Vector4(x * other.x, y * other.y, z * other.z, w * other.w);
+		}
+
+		inline Vector4 operator / (float f) const {
+			return this->operator*(1.f / f);
+		}
+
 	};
 }
 
