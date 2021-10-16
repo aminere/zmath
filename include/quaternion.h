@@ -32,6 +32,7 @@ namespace zmath {
 		}
 
 		Quaternion(const Vector3& eulerAngles, RotationOrder order = RotationOrder::YXZ);
+		Quaternion(const Vector3& axis, float angle);
 		Quaternion(const Matrix44& matrix);
 
 		Quaternion& normalize();
@@ -39,5 +40,6 @@ namespace zmath {
 		float length() const;
 
 		Vector3 operator * (const Vector3& v) const;
+		Quaternion operator * (const Quaternion& q) const;
 	};
 }

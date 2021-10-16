@@ -50,6 +50,15 @@ namespace zmath {
 		normalize();
 	}
 
+	Quaternion::Quaternion(const Vector3& axis, float radians) {
+		auto halfAngle = radians / 2.f, s = sin(halfAngle);
+		x = axis.x * s;
+		y = axis.y * s;
+		z = axis.z * s;
+		w = cos(halfAngle);
+		normalize();
+	}
+
 	Quaternion::Quaternion(const zmath::Matrix44& matrix) {
 		// based on Threejs
 		auto te = matrix.data;
@@ -122,5 +131,17 @@ namespace zmath {
 			iy * w + iw * -y + iz * -x - ix * -z,
 			iz * w + iw * -z + ix * -y - iy * -x
 		);
+	}
+
+	Quaternion Quaternion::operator*(const Quaternion& q) const {
+		// based on Threejs
+		float qax = q.x, qay = q.y, qaz = q.z, qaw = q.w;
+		float qbx = x, qby = y, qbz = z, qbw = w;
+		Quaternion out;
+		out.x = qax * qbw + qaw * qbx + qay * qbz - qaz * qby;
+		out.y = qay * qbw + qaw * qby + qaz * qbx - qax * qbz;
+		out.z = qaz * qbw + qaw * qbz + qax * qby - qay * qbx;
+		out.w = qaw * qbw - qax * qbx - qay * qby - qaz * qbz;
+		return out;
 	}
 }
