@@ -20,6 +20,7 @@ namespace zmath {
         bool getInverse(Matrix44& out) const;
         void decompose(Vector3& position, Quaternion& rotation, Vector3& scale) const;
         float determinant() const;
+        Quaternion toQuaternion() const;
 
         Matrix44 operator * (const Matrix44& other) const;
         Vector3 operator * (const Vector3& v) const;

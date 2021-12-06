@@ -266,4 +266,44 @@ namespace zmath {
 		m[12] = 0.0;            m[13] = 0.0; m[14] = b;  m[15] = 0.0;
 		return out;
 	}
+
+	Quaternion Matrix44::toQuaternion() const {
+		// based on Threejs
+		auto te = this->data;
+		auto m11 = te[0], m12 = te[4], m13 = te[8],
+			m21 = te[1], m22 = te[5], m23 = te[9],
+			m31 = te[2], m32 = te[6], m33 = te[10],
+			trace = m11 + m22 + m33;
+
+		Quaternion q;
+		if (trace > 0.f) {
+			auto s = 0.5f / sqrt(trace + 1.0f);
+			q.w = 0.25f / s;
+			q.x = (m32 - m23) * s;
+			q.y = (m13 - m31) * s;
+			q.z = (m21 - m12) * s;
+
+		} else if (m11 > m22 && m11 > m33) {
+			auto s = 2.0f * sqrt(1.0f + m11 - m22 - m33);
+			q.w = (m32 - m23) / s;
+			q.x = 0.25f * s;
+			q.y = (m12 + m21) / s;
+			q.z = (m13 + m31) / s;
+
+		} else if (m22 > m33) {
+			auto s = 2.0f * sqrt(1.0f + m22 - m11 - m33);
+			q.w = (m13 - m31) / s;
+			q.x = (m12 + m21) / s;
+			q.y = 0.25f * s;
+			q.z = (m23 + m32) / s;
+
+		} else {
+			auto s = 2.0f * sqrt(1.0f + m33 - m11 - m22);
+			q.w = (m21 - m12) / s;
+			q.x = (m13 + m31) / s;
+			q.y = (m23 + m32) / s;
+			q.z = 0.25f * s;
+		}
+		return q.normalize();
+	}
 }
