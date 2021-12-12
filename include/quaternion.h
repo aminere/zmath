@@ -1,8 +1,8 @@
 #pragma once
 
-namespace zmath {
+#include "vector3.h"
 
-	class Matrix44;
+namespace zmath {
 
 	class Quaternion {
 	public:
@@ -33,7 +33,6 @@ namespace zmath {
 
 		Quaternion(const Vector3& eulerAngles, RotationOrder order = RotationOrder::YXZ);
 		Quaternion(const Vector3& axis, float angle);
-		Quaternion(const Matrix44& matrix);
 
 		Quaternion& normalize();
 
