@@ -105,7 +105,7 @@ namespace zmath {
 		matrix.data[9] *= invSZ;
 		matrix.data[10] *= invSZ;
 
-		rotation = Quaternion(matrix);
+		rotation = matrix.toQuaternion();
 
 		scale.x = sx;
 		scale.y = sy;
