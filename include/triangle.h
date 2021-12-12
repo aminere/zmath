@@ -24,8 +24,9 @@ namespace zmath {
 
 		}
 
-		bool contains(const Vector3& p, Vector3& coords) const;
-		bool getBarycentricCoords(const Vector3& p, Vector3& out) const;
+		bool contains(const Vector3& p) const;
+		bool containsCoords(const Vector3& barycentricCoords) const;
+		bool getBarycentricCoords(const Vector3& p, Vector3& out) const;		
 	};
 }
 

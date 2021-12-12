@@ -4,21 +4,33 @@
 
 namespace zmath {
 
-	bool Triangle::contains(const Vector3& p, Vector3& coords) const {
-		if (getBarycentricCoords(p, coords)) {
-			if (coords.y < 0) {
-				return false;
-			}
-			if (coords.z < 0) {
-				return false;
-			}
-			if (coords.y + coords.z > 1.f) {
-				return false;
-			}
-			return true;
-		} else {
+	bool Triangle::contains(const Vector3& p) const {
+		auto _a = a - p;
+		auto _b = b - p;
+		auto _c = c - p;
+		auto u = _b.cross(_c);
+		auto v = _c.cross(_a);
+		auto w = _a.cross(_b);
+		if (u.dot(v) < 0) {
 			return false;
 		}
+		if (u.dot(w) < 0) {
+			return false;
+		}
+		return true;
+	}
+
+	bool Triangle::containsCoords(const Vector3& barycentricCoords) const {
+		if (barycentricCoords.y < 0) {
+			return false;
+		}
+		if (barycentricCoords.z < 0) {
+			return false;
+		}
+		if (barycentricCoords.y + barycentricCoords.z > 1.f) {
+			return false;
+		}
+		return true;
 	}
 
 	bool Triangle::getBarycentricCoords(const Vector3& p, Vector3& out) const {

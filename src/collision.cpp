@@ -11,6 +11,7 @@ namespace zmath {
         } else {
             auto denominator = plane.normal.dot(ray.direction);
             if (isZero(denominator)) {
+                // ray is parallel to the plane, no intersection
                 return false;
             } else {
                 auto toIntersection = -nominator / denominator;
@@ -32,8 +33,7 @@ namespace zmath {
             return false;
         }
 
-        Vector3 coords;
-        if (!triangle.contains(out.intersection, coords)) {
+        if (!triangle.contains(out.intersection)) {
             return false;
         }
 
